@@ -1,9 +1,9 @@
-﻿using eTickets.Data;
+﻿using eTickets.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace eTickets.Models
 {
-	public class Movie
+    public class Movie
 	{
 		[Key]
 		public int Id { get; set; }
