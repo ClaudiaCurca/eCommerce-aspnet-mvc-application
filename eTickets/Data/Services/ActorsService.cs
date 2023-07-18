@@ -1,9 +1,15 @@
 ﻿using eTickets.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Data.Services
 {
     public class ActorsService : IActorsService
     {
+        private readonly AppDBContext _context;
+        public ActorsService(AppDBContext context)
+        {
+            _context = context;
+        }
 
         public void Add(Actor actor)
         {
@@ -15,9 +21,10 @@ namespace eTickets.Data.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Actor> GetAll()
+        public async Task<IEnumerable<Actor>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = await _context.Actors.ToListAsync();
+            return result;
         }
 
         public Actor GetById(int id)
