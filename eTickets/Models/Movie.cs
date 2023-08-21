@@ -11,29 +11,36 @@ namespace eTickets.Models
 		public int Id { get; set; }
 
 		[Display(Name = "Name")]
-		public string Name { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
 
 		[Display(Name = "Description")]
-		public string Description { get; set; }
+        [Required(ErrorMessage = "Description is required")]
+        public string Description { get; set; }
 
 		[Display(Name = "Price")]
-		public double Price { get; set; }
+        [Required(ErrorMessage = "Price is required")]
+        public double Price { get; set; }
 
 		[Display(Name = "Image")]
-		public string ImageUrl { get; set;}
+        [Required(ErrorMessage = "Image is required")]
+        public string ImageUrl { get; set;}
 
 		[Display(Name = "Start Date")]
-		public DateTime StartDate { get; set; }
+        [Required(ErrorMessage = "Start Date is required")]
+        public DateTime StartDate { get; set; }
 
 		[Display(Name = "End Date")]
-		public DateTime EndDate { get; set; }
+        [Required(ErrorMessage = "End Date is required")]
+        public DateTime EndDate { get; set; }
 
 		[Display(Name = "Movie Category")]
-		public MovieCategory MovieCategory { get; set; }
+        [Required(ErrorMessage = "Movie Category is required")]
+        public MovieCategory MovieCategory { get; set; }
 
 		//Relationship
 
-		public List<Actor_Movie> Actors_Movies { get; set; }
+		public List<Actor_Movie>? Actors_Movies { get; set; }
 
 		public int CinemaId { get; set; }
 
