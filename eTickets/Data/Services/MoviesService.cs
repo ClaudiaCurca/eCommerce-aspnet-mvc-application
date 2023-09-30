@@ -50,7 +50,7 @@ namespace eTickets.Data.Services
 			  .Include(p => p.Producer)
 			  .Include(am => am.Actors_Movies).ThenInclude(a => a.Actor)
 			  .FirstOrDefaultAsync(n => n.Id == id);
-			//await _context.SaveChangesAsync();
+			await _context.SaveChangesAsync();
 
 			return movieDetails;
 		}
