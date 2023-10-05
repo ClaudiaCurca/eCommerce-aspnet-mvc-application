@@ -1,6 +1,7 @@
 ﻿using eTickets.Data.Services;
 using eTickets.Models;
 using eTickets.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -9,14 +10,17 @@ namespace eTickets.Controllers
     public class MoviesController : Controller
 	{
 		private readonly IMoviesServices _service;
+		private readonly UserManager<ApplicationUser> _userManager;
 
-		public MoviesController(IMoviesServices service)
+		public MoviesController(IMoviesServices service,UserManager<ApplicationUser> userManager)
 		{
 			_service = service;
+			this._userManager = userManager;
 		}
 
 		public async Task<IActionResult> Index()
 		{
+			ViewData["UserId"]=_userManager.GetUserId(this.User);
 			var allMovies = await _service.GetAllAsync(n => n.Cinema);
 			return View(allMovies);
 		}
