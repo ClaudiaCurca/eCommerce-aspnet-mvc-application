@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(connectionString));
 
+
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddDefaultUI()
     .AddEntityFrameworkStores<AppDBContext>();
